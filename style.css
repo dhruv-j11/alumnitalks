@@ -40,19 +40,36 @@ body{
     color: var(--main-color);
     display: none;
 }
-.logo{
+@keyframes shadowPulse {
+    0% {
+        text-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 30px var(--main-color);
+    }
+    50% {
+        text-shadow: 0 0 20px var(--main-color), 0 0 30px var(--main-color), 0 0 40px var(--main-color);
+    }
+    100% {
+        text-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 30px var(--main-color);
+    }
+}
+
+.logo {
     font-size: 3.4rem;
     color: var(--text-color);
     font-weight: 900;
     cursor: pointer;
     transition: 0.2s ease;
+    animation: shadowPulse 2s infinite;
 }
-.logo:hover{
+
+.logo:hover {
     transform: scale(1.06);
+    text-shadow: 0 0 25px var(--main-color), 0 0 35px var(--main-color), 0 0 45px var(--main-color);
 }
+
 span{
     color: var(--main-color);
 }
+
 .navbar a{
     font-size: 2rem;
     color: var(--text-color);

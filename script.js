@@ -8,17 +8,28 @@ menuIcon.onclick = () => {
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const text = "Hey, we're AlumniTalks";
-    let index = 0;
     const speed = 200; // Speed in milliseconds
+    let index = 0;
+    let isDeleting = false;
     
     function typeWriter() {
-        if (index < text.length) {
-            document.getElementById('typewriter').innerHTML += text.charAt(index);
-            index++;
-            setTimeout(typeWriter, speed);
+        const textElement = document.getElementById('typewriter');
+        if (isDeleting) {
+            textElement.innerHTML = text.substring(0, index--);
+            if (index < 0) {
+                isDeleting = false;
+                setTimeout(typeWriter, 500); // Delay before starting to type again
+            } else {
+                setTimeout(typeWriter, speed / 2); // Speed while deleting
+            }
         } else {
-            // After finishing typing, remove the cursor
-            document.getElementById('cursor').style.display = 'none';
+            textElement.innerHTML = text.substring(0, index++);
+            if (index > text.length) {
+                isDeleting = true;
+                setTimeout(typeWriter, 1000); // Delay before starting to delete
+            } else {
+                setTimeout(typeWriter, speed); // Speed while typing
+            }
         }
     }
     

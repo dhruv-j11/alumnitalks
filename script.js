@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             textElement.innerHTML = text.substring(0, index--);
             if (index < 0) {
                 isDeleting = false;
-                setTimeout(typeWriter, 500); // Delay before starting to type again
+                setTimeout(typeWriter, 3000); // Delay before starting to type again
             } else {
                 setTimeout(typeWriter, speed / 2); // Speed while deleting
             }
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             textElement.innerHTML = text.substring(0, index++);
             if (index > text.length) {
                 isDeleting = true;
-                setTimeout(typeWriter, 1000); // Delay before starting to delete
+                setTimeout(typeWriter, 10000); // Delay before starting to delete
             } else {
                 setTimeout(typeWriter, speed); // Speed while typing
             }
